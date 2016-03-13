@@ -274,7 +274,21 @@ void reseTimer(struct timeval* timer){
 	timer->tv_sec=5;
 	timer->tv_usec=0;
 }
-void readfrom(user_t* auser){}
+void readfrom(user_t* auser){
+   num=read(auser->sock, auser->readBuffer->buffer, auser->readBuffer->size-readBuffer->messageLength);
+   if (auser->readBuffer->messageLength+num==auser->size;){
+      expandVector(auser->readBuffer);
+      fd_set thisguy;
+      FD_ZERO(&thisguy);
+      FD_SET(auser->sock,&thisguy);
+      struct timeval instant;
+      instant->tv_sec-0;
+      instant->tv_usec=100;
+      if(select(auser->sock+1, &thisguy, NULL, NULL, instant)){
+         readfrom(auser);
+      }
+      return; 
+}
 void writeto(user_t* auser){}
 void eventLoop(user_t** users, int inport){
    fd_set set4read;
